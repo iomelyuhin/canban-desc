@@ -6,7 +6,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasks: [],
-
     isOpenEditPopup: false,
     isOpenPopup: false,
     currentTask: {},
@@ -22,6 +21,11 @@ export default new Vuex.Store({
       const response = require("./data/tasks.json");
       commit("SET_TASKS", response);
       return response
+    },
+    fetchTodoTasks({ commit }) {
+      // const response = this.$axios.get("/tasks.json"); получить json с сервера
+      return commit("SET_TODO_TASKS");
+       
     },
   }
 });
