@@ -7,32 +7,36 @@
                 :task="task"
             )
         .canban__task-item-btns
-            button.canban__task-item-btn.main-btn.btn--add-btn.active + Добавить задачу    
+            button(
+                @click="openAddTaskPopup"
+            ).canban__task-item-btn.main-btn.btn--add-btn.active + Добавить задачу    
         
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
     props: {
     },
     data() {
         return {
-            todoTasks: []
+
         }
     },
     computed: {
         ...mapState({
-            tasks: state => state.tasks
+            todoTasks: state => state.tasks.filter(task => task.status === "todo")
         })
     },
     components: {
         canbanTaskList: () => import("./canbanTaskList.vue")
     },
-    created() {
-        this.todoTasks = this.tasks.filter(task => task.status === "todo");
-    },
     methods: {
+        ...mapMutations(['openAddPopup']),
+        openAddTaskPopup() {
+            this.openAddPopup();
+            
+        }
     }
     
 }

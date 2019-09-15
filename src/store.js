@@ -14,6 +14,26 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_TASKS: (state, tasks) => (state.tasks = tasks),
+    openEditCurrentPopup: (state, curretTask) => {
+      state.isOpenEditPopup = true;
+      state.currentTask = curretTask;
+    },
+    closeEditPopup: (state) => {
+      state.isOpenEditPopup = false;
+    },
+    openAddPopup: (state) => {
+      state.isOpenPopup = true;
+      
+    },
+    closeAddPopup: (state) => {
+      state.isOpenPopup = false;
+    },
+    addTask(state, task) {
+      state.tasks.push(task);
+    },
+    removeTask(state, taskId) {
+      state.tasks = state.tasks.filter(item => item.id !== taskId);
+    },
   },
   actions: {
     fetchTasks({ commit }) {

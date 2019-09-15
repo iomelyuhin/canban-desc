@@ -1,6 +1,6 @@
 <template lang="pug">
     .editPopup(
-      :class="{'active' : isOpenPopup}"
+      :class="{'active' : editMode}"
     )        
         .editPopup__wrap
           button(
@@ -32,44 +32,45 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 let uniqId = 3;
 export default {
-    props: {
-        isOpenPopup: Boolean,
-        tasks: Array
-    },
-    data() {
-      return {
-        task: {
-          id: "0",
-          title: "",
-          description: "",
-          status: "todo",
-          comment: ""
-        }
-      }
-    },
-    methods: {
-      ...mapMutations(["addTask", "closeAddPopup"]),
-      closePopup() {
-        this.closeAddPopup();
-        // this.$emit('closePopup');
+  props: {},
+  data() {
+    return {
+      task: {
+        id: "0",
+        title: "",
+        description: "",
+        status: "todo",
+        comment: ""
       },
-      addNewTask(){
-        uniqId++;
-        this.task.id = uniqId;
-        this.addTask({...this.task});
-        this.task.title = "";
-        this.task.description = "";
-        this.closePopup();
-      },
-      cancel() {
-        this.task.title = "";
-        this.task.description = "";
-        this.closePopup();
-
-      }
+    };
+  },
+  computed: {
+    ...mapState({
+      editMode: state => state.isOpenPopup
+    })
+  },
+  methods: {
+    ...mapMutations(["addTask", "closeAddPopup"]),
+    closePopup() {
+      this.closeAddPopup();
+      // this.$emit('closePopup');
+    },
+    addNewTask() {
+      uniqId++;
+      this.task.id = uniqId;
+      this.addTask({ ...this.task });
+      this.task.title = "";
+      this.task.description = "";
+      this.closePopup();
+    },
+    cancel() {
+      this.task.title = "";
+      this.task.description = "";
+      this.closePopup();
     }
-}
+  }
+};
 </script>

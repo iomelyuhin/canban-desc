@@ -10,7 +10,9 @@
             .canban__task-item-description {{task.description}}
             .canban__task-item-comment {{task.comment}}
             .canban__task-item-controls
-            canbanTaskBtns
+            canbanTaskBtns(
+                :task="task"
+            )
 </template>
 
 <script>

@@ -1,44 +1,63 @@
 <template lang="pug">
-    .editPopup 
-        .editPopup__wrap
+    .editPopup(:class="{'active' : editMode}")
+      .editPopup__wrap
+        button(
+          @click="closePopup"
+          type=button
+        ).editPopup__close-btn x
+        h2.editPopup__title Добавить задание
+        .editPopup-editzone
+          input(
+            type="text" 
+            placeholder="Заголовок задания"
+            v-model="currentTask.title"
+          ).editPopup__edit-title
+          textarea(
+            rows="4"
+            placeholder="Описание к заданию"
+            v-model="currentTask.description"
+
+          ).editPopup__edit-description {{currentTask.description}}
+          textarea.editPopup__edit-comment(
+            v-model="currentTask.comment"
+            placeholder="Оставьте комментарий"
+          ) {{currentTask.comment}}
+        .editPopup__btns
           button(
-            type=button
-          ).editPopup__close-btn x
-          h2.editPopup__title Добавить задание
-          .editPopup-editzone
-            input(
-              type="text" 
-              placeholder="Заголовок задания"
-            ).editPopup__edit-title
-            textarea(
-              rows="4"
-              placeholder="Описание к заданию"
-            ).editPopup__edit-description desc
-            textarea.editPopup__edit-comment comment
-          .editPopup__btns
-            button(
-              type="button"
-            ).main-btn.editPopup__apply Применить
-            button(type="button").main-btn.editPopup__cancel Отменить
+            @click="applyTask"
+            type="button"
+          ).main-btn.editPopup__apply Применить
 </template>
 
 <script>
 let uniqId = 3;
+import { mapState, mapMutations } from "vuex";
 export default {
-    props: {
-
+  data() {
+    return {
+      editedTask: {}
+    };
+  },
+  props: {},
+  computed: {
+    ...mapState({
+      editMode: state => state.isOpenEditPopup,
+      currentTask: state => state.currentTask
+    })
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    ...mapMutations(["closeEditPopup"]),
+    closePopup() {
+      this.closeEditPopup();
     },
-    computed: {
-
-    },
-    data() {
-      return {
-
-      }
-    },
-    methods: {
-
-    },
-
-}
+    applyTask() {
+      this.closeEditPopup();
+      
+    }
+  },
+  created() {}
+};
 </script>

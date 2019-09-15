@@ -17,7 +17,6 @@ import { mapState } from "vuex";
 export default {
     data() {
         return {
-            runTasks: []
         }
     },
     components: {
@@ -25,11 +24,8 @@ export default {
     },
     computed: {
         ...mapState({
-            tasks: state => state.tasks
+            runTasks: state => state.tasks.filter(task => task.status === "run"),
         })
-    },
-    created() {
-        this.runTasks = this.tasks.filter(task => task.status === "run");
     }
     
 }
