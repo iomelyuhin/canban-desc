@@ -4,16 +4,16 @@
       canban
       editTaskPopup
       addTaskPopup
+
 </template>
 
 <script>
 export default {
   data() {
-    return {
-    }
+    return {};
   },
   components: {
-    canban: () => import("./components/canban"), 
+    canban: () => import("./components/canban"),
     addTaskPopup: () => import("./components/addTaskPopup"),
     editTaskPopup: () => import("./components/editTaskPopup")
   },
@@ -22,15 +22,12 @@ export default {
     //   openPopup: state => state.isOpenPopup
     // })
   },
-  methods: {
-
-  }
-  
-}
+  methods: {}
+};
 </script>
 <style lang="scss">
 // layout
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 
 html {
   font-style: 18px;
@@ -41,7 +38,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-family: "Open Sans", Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.42;
   -webkit-font-smoothing: antialiased;
@@ -53,7 +50,6 @@ body {
   min-height: 100%;
   position: relative;
   background-color: darkslategrey;
-
 }
 
 .container {
@@ -112,8 +108,6 @@ img {
   max-width: 100%;
   max-height: 100%;
 }
-
-
 
 //
 </style>

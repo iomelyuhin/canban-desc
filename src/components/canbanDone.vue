@@ -4,6 +4,7 @@
         ul.canban__task-list
             canbanTaskList(
                 v-for="task in doneTasks"
+                :key="taskId"
                 :task="task"
             )
         .canban__task-item-btns
@@ -15,22 +16,16 @@
 import { mapState } from "vuex";
 
 export default {
-    data() {
-        return {
-        }
-    },
-    components: {
-        canbanTaskList: () => import("./canbanTaskList.vue")
-    },
-    computed: {
-        ...mapState({
-            doneTasks: state => state.tasks.filter(task => task.status === "done"),
-        })
-    }
-    
-}
+  data() {
+    return {};
+  },
+  components: {
+    canbanTaskList: () => import("./canbanTaskList.vue")
+  },
+  computed: {
+    ...mapState({
+      doneTasks: state => state.tasks.filter(task => task.status === "done")
+    })
+  }
+};
 </script>
-
-<style lang="scss" scoped>
-
-</style>

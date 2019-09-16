@@ -4,20 +4,23 @@
         "status" : "todo",
         "title" : "Задача 1",
         "description" : "Описание к задаче 1",
-        "comment" : "Комментарий к задаче 1"
+        "comment" : "Комментарий к задаче 1",
+        "createdAt": "new Date()"
     },
     {
         "id" : 2,
         "status" : "run",
         "title" : "Задача 2",
         "description" : "Описание к задаче 2",
-        "comment" : "Комментарий к задаче 2"
+        "comment" : "Комментарий к задаче 2",
+        "createdAt": "new Date()"
     },
     {
         "id" : 3,
         "status" : "done",
         "title" : "Задача 3",
         "description" : "Описание к задаче 3",
-        "comment" : "Комментарий к задаче 3"
+        "comment" : "Комментарий к задаче 3",
+        "createdAt": "new Date()"
     }
 ]

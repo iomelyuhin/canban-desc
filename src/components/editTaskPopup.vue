@@ -30,7 +30,6 @@
 </template>
 
 <script>
-let uniqId = 3;
 import { mapState, mapMutations } from "vuex";
 export default {
   data() {
@@ -45,9 +44,6 @@ export default {
       currentTask: state => state.currentTask
     })
   },
-  data() {
-    return {};
-  },
   methods: {
     ...mapMutations(["closeEditPopup"]),
     closePopup() {
@@ -55,7 +51,6 @@ export default {
     },
     applyTask() {
       this.closeEditPopup();
-      
     }
   },
   created() {}

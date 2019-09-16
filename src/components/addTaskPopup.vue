@@ -44,7 +44,7 @@ export default {
         description: "",
         status: "todo",
         comment: ""
-      },
+      }
     };
   },
   computed: {

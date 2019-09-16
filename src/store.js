@@ -8,24 +8,26 @@ export default new Vuex.Store({
     tasks: [],
     isOpenEditPopup: false,
     isOpenPopup: false,
-    currentTask: {},
-    
-
+    currentTask: {}
   },
   mutations: {
-    SET_TASKS: (state, tasks) => (state.tasks = tasks),
+    SET_TASKS: (state, tasks) => {
+      tasks.forEach(task => {
+        task.createdAt = new Date();
+      });
+      state.tasks = tasks;
+    },
     openEditCurrentPopup: (state, curretTask) => {
       state.isOpenEditPopup = true;
       state.currentTask = curretTask;
     },
-    closeEditPopup: (state) => {
+    closeEditPopup: state => {
       state.isOpenEditPopup = false;
     },
-    openAddPopup: (state) => {
+    openAddPopup: state => {
       state.isOpenPopup = true;
-      
     },
-    closeAddPopup: (state) => {
+    closeAddPopup: state => {
       state.isOpenPopup = false;
     },
     addTask(state, task) {
@@ -33,19 +35,17 @@ export default new Vuex.Store({
     },
     removeTask(state, taskId) {
       state.tasks = state.tasks.filter(item => item.id !== taskId);
-    },
+    }
   },
   actions: {
     fetchTasks({ commit }) {
       // const response = this.$axios.get("/tasks.json"); получить json с сервера
       const response = require("./data/tasks.json");
       commit("SET_TASKS", response);
-      return response
+      return response;
     },
     fetchTodoTasks({ commit }) {
-      // const response = this.$axios.get("/tasks.json"); получить json с сервера
       return commit("SET_TODO_TASKS");
-       
-    },
+    }
   }
 });

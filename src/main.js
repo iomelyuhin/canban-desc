@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import axios from "./requests";
+import vueMoment from "vue-moment";
+
+Vue.use(vueMoment);
 
 store.$axios = axios;
 
