@@ -2,7 +2,9 @@
 
 ## Project setup
 ```
-yarn install
+$ git clone https://github.com/iomelyuhin/canban-desc.git
+$ cd canban-desc
+$ yarn
 ```
 
 ### Compiles and hot-reloads for development
